@@ -7,12 +7,10 @@ import { User } from './users/user.entity.js';
 
 @Module({
   imports: [
-    // 1. Configuración global para leer el archivo .env
     ConfigModule.forRoot({
       isGlobal: true,
     }),
     
-    // 2. Conexión a la base de datos PostgreSQL
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -24,11 +22,9 @@ import { User } from './users/user.entity.js';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
         entities: [User],
-        synchronize: true, // ¡Solo para desarrollo! Crea las tablas automáticamente
+        synchronize: true, 
       }),
     }),
-    
-    // 3. Nuestros módulos
     UsersModule,
     AuthModule,
   ],

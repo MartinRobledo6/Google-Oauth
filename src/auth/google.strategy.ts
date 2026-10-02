@@ -11,7 +11,6 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     private authService: AuthService,
   ) {
     super({
-      // El signo "!" al final le asegura a TypeScript que el valor existe
       clientID: configService.get<string>('GOOGLE_CLIENT_ID')!,
       clientSecret: configService.get<string>('GOOGLE_CLIENT_SECRET')!,
       callbackURL: configService.get<string>('GOOGLE_CALLBACK_URL')!,

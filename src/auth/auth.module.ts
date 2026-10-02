@@ -8,13 +8,13 @@ import { GoogleStrategy } from './google.strategy.js';
 
 @Module({
   imports: [
-    UsersModule, // Necesario para buscar/guardar usuarios
+    UsersModule,  
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),
-        signOptions: { expiresIn: '1h' }, // El token expira en 1 hora
+        signOptions: { expiresIn: '1h' }, 
       }),
     }),
   ],
